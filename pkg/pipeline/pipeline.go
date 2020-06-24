@@ -79,7 +79,7 @@ func New(srcr Sourcer, xformr Transformer) *Client {
 
 // NewConduit ...
 func (c *Client) NewConduit(ctx context.Context, name string) (*Conduit, error) {
-	sendc := make(chan *Message)
+	sendc := make(chan *Message, 1000000)
 	srcc, srcerrc, err := c.sourcer.Source(ctx, sendc)
 	if err != nil {
 		return nil, err

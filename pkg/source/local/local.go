@@ -14,7 +14,7 @@ func New() *Client { return &Client{} }
 
 // Source ...
 func (c *Client) Source(ctx context.Context, sendc chan *pipeline.Message) (<-chan *pipeline.Message, <-chan error, error) {
-	out := make(chan *pipeline.Message)
+	out := make(chan *pipeline.Message, 1000000)
 	errc := make(chan error)
 
 	go func() {

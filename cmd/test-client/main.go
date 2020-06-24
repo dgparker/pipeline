@@ -38,7 +38,7 @@ func main() {
 	}
 
 	go func() {
-		time.Sleep(10 * time.Second)
+		time.Sleep(100 * time.Second)
 		cancel()
 	}()
 
@@ -56,7 +56,7 @@ func main() {
 	for {
 		conduit.Send(&pipeline.Message{
 			Route: "test",
-			Data:  []byte("oh hai thurr"),
+			Data:  []byte(""),
 		})
 		sendCounter.Incr(1)
 	}
